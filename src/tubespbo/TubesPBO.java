@@ -36,7 +36,7 @@ public class TubesPBO extends Application {
         Button button = detik.Tombol_start();
         Label timerLabel = detik.Teks_waktu();
         Label soal = detik.getSoal();
-        Label score1 = new Label("score");
+        Label score1 = new Label("Nilai");
 
         VBox vb = new VBox(20);         
         vb.setAlignment(Pos.CENTER);      
