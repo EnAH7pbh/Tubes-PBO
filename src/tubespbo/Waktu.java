@@ -5,6 +5,7 @@
  */
 package tubespbo;
 
+import java.util.Random;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -25,8 +26,12 @@ public class Waktu {
     private static final Integer STARTTIME = 60;
     private Timeline timeline;
     private final Label timerLabel = new Label();
+    Label Soal = new Label();
     private final IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
-    
+    Random rand = new Random();
+    int FirstNumb, SecondNumb, operator;
+    String OP;
+    int result;
     public Button Tombol_start() {
         Button button = new Button();
         button.setText("Start");
@@ -40,6 +45,9 @@ public class Waktu {
                     new KeyFrame(Duration.seconds(STARTTIME + 1),
                             new KeyValue(timeSeconds, 0)));
             timeline.playFromStart();
+            FirstNumb = rand.nextInt(100);
+            SecondNumb = rand.nextInt(100);
+            operator = rand.nextInt(4);
         });
         return button;
     }
@@ -48,5 +56,30 @@ public class Waktu {
         timerLabel.textProperty().bind(timeSeconds.asString());
         timerLabel.setTextFill(Color.RED);
         return timerLabel;
+    }
+    
+    public Label getSoal(){
+        switch (operator) {
+            case 1:
+                result=FirstNumb+SecondNumb;
+                OP="+";
+                break;
+            case 2:
+                result=FirstNumb-SecondNumb;
+                OP="-";
+                break;
+            case 3:
+                result=FirstNumb*SecondNumb;
+                OP="*";
+                break;
+            case 4:
+                result=FirstNumb/SecondNumb;
+                OP="/";
+                break;
+            default:
+                break;
+        }
+        Soal.setText(""+FirstNumb+" "+OP+" "+SecondNumb);
+        return Soal;
     }
 }

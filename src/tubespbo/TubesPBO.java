@@ -5,6 +5,7 @@
  */
 package tubespbo;
 
+import java.util.Random;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -28,13 +29,13 @@ public class TubesPBO extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("FX Timer with Binding");
+        primaryStage.setTitle("Permainan Hitung Hitungan");
         Group root = new Group();
         Scene scene = new Scene(root, 400, 400);
 
         Button button = detik.Tombol_start();
         Label timerLabel = detik.Teks_waktu();
-        Label soal = new Label("soal disini");
+        Label soal = detik.getSoal();
         Label score1 = new Label("score");
 
         VBox vb = new VBox(20);         
