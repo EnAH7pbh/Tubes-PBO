@@ -20,7 +20,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
-import javax.swing.*;
 
 /**
  * @author hanif
