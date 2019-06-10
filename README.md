@@ -5,7 +5,7 @@ menyelesaikan soal matematika sederhana selama 60 detik sebanyak-banyaknya
 ```
 ## Authors
 
-* **Ahmad Hanif Nurfauzi** - *Initial work* - [PurpleBooth](https://github.com/ahmadcah)
+* **Ahmad Hanif Nurfauzi 201810370311198** - *Initial work* - [ahmadcah](https://github.com/ahmadcah)
 
 
  
