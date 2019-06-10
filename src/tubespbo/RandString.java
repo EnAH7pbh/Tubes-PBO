@@ -4,7 +4,7 @@ public class RandString {
     Random rand = new Random();
     public String getAngkaS(){
         String angka;
-        int acak = rand.ints(1,(100+1)).findFirst().getAsInt();
+        int acak = rand.ints(1,(10+1)).findFirst().getAsInt();
         angka = String.valueOf(acak);
         return angka;
     }
