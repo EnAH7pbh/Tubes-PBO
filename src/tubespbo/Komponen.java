@@ -34,6 +34,7 @@ public class Komponen {
     private TextField jawab;
     private Button Menjawab;
     private int Nilaiint = 0;
+    private Button Reset;
 
     public Label getOperator() {
         operator = new Label();
@@ -70,7 +71,7 @@ public class Komponen {
         Menjawab.setOnAction((new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (operator.getText() == "+") {
+                if (operator.getText().equals("+")) {
                     int nilai, bil1, bil2, jawaban;
                     bil1 = Integer.parseInt(angka1.getText());
                     bil2 = Integer.parseInt(angka2.getText());
@@ -91,7 +92,7 @@ public class Komponen {
                         operator.setText(unduh.getOperator());
                         Nilai.setText("" + Nilaiint);
                     }
-                } else if (operator.getText() == "-") {
+                } else if (operator.getText().equals("-")) {
                     int nilai, bil1, bil2, jawaban;
                     bil1 = Integer.parseInt(angka1.getText());
                     bil2 = Integer.parseInt(angka2.getText());
@@ -112,7 +113,7 @@ public class Komponen {
                         operator.setText(unduh.getOperator());
                         Nilai.setText("" + Nilaiint);
                     }
-                } else if (operator.getText() == "*") {
+                } else if (operator.getText().equals("*")) {
                     int nilai, bil1, bil2, jawaban;
                     bil1 = Integer.parseInt(angka1.getText());
                     bil2 = Integer.parseInt(angka2.getText());
@@ -133,7 +134,7 @@ public class Komponen {
                         operator.setText(unduh.getOperator());
                         Nilai.setText("" + Nilaiint);
                     }
-                } else if (operator.getText() == ":") {
+                } else if (operator.getText().equals(":") ) {
                     double nilai, bil1, bil2, jawaban;
                     bil1 = Double.parseDouble(angka1.getText());
                     bil2 = Double.parseDouble(angka2.getText());
@@ -158,5 +159,17 @@ public class Komponen {
             }
         }));
         return Menjawab;
+    }
+    public Button Ulangi(){
+        Reset = new Button();
+        Reset.setText("Reset");
+        Reset.setOnAction((new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Nilaiint = 0;
+                Nilai.setText("0");
+            }
+        }));
+        return Reset;
     }
 }

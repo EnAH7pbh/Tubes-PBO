@@ -44,6 +44,7 @@ public class MainNInterface extends Application {
         TextField answer = unduh.setJawab();
         Button Menjawab = unduh.Jawab();
         Label score1 = unduh.getNilai();
+        Button Ulangi = unduh.Ulangi();
 
         answer.setPrefWidth(40);
 
@@ -56,7 +57,7 @@ public class MainNInterface extends Application {
         hb.getChildren().addAll(angka1, Operator, angka2, equal, answer, Menjawab);
 
         vb.setPrefWidth(scene.getWidth());
-        vb.getChildren().addAll( score1, hb);
+        vb.getChildren().addAll( score1, hb,Ulangi);
         vb.setLayoutY(30);
 
         root.getChildren().add(vb);
