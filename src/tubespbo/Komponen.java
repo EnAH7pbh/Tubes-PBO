@@ -27,7 +27,7 @@ import javafx.util.Duration;
 public class Komponen {
 
     RandString unduh = new RandString();
-    private static final Integer STARTTIME = 60;
+    private static final Integer STARTTIME = 2;
     private Timeline timeline;
     private Label timerLabel;
     private Label angka1;
@@ -37,6 +37,7 @@ public class Komponen {
     private TextField jawab;
     Button Menjawab;
     private IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
+    private IntegerProperty zero = new SimpleIntegerProperty(0);
     private int Nilaiint = 0;
 
     public Button Tombol_start() {
@@ -50,9 +51,7 @@ public class Komponen {
             }
             timeSeconds.set(STARTTIME);
             timeline = new Timeline();
-            timeline.getKeyFrames().add(
-                    new KeyFrame(Duration.seconds(STARTTIME + 1),
-                            new KeyValue(timeSeconds, 0)));
+            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(STARTTIME + 1), new KeyValue(timeSeconds, 0)));
             timeline.playFromStart();
             Menjawab.setDisable(false);
             jawab.setDisable(false);
@@ -180,7 +179,7 @@ public class Komponen {
                         angka2.setText(unduh.getAngkaS());
                         operator.setText(unduh.getOperator());
                         Nilai.setText("" + Nilaiint);
-                    }else {
+                    } else {
                         Nilaiint += 100;
                         jawab.setText("");
                         angka1.setText(unduh.getAngkaS());

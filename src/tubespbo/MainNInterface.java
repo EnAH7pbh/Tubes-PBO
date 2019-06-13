@@ -26,7 +26,6 @@ import javax.swing.JOptionPane;
 public class MainNInterface extends Application {
 
     Komponen unduh = new Komponen();
-    RandString UP = new RandString();
 
     public static void main(String[] args) {
         Application.launch(args);
