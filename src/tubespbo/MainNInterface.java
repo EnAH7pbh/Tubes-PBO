@@ -37,8 +37,6 @@ public class MainNInterface extends Application {
         Group root = new Group();
         Scene scene = new Scene(root, 400, 400);
 
-        Button button = unduh.Tombol_start();
-        Label timerLabel = unduh.getTimerLabel();
         Label Operator = unduh.getOperator();
         Label angka1 = unduh.getAngka();
         Label angka2 = unduh.getAngka2();
@@ -58,7 +56,7 @@ public class MainNInterface extends Application {
         hb.getChildren().addAll(angka1, Operator, angka2, equal, answer, Menjawab);
 
         vb.setPrefWidth(scene.getWidth());
-        vb.getChildren().addAll(timerLabel, score1, hb, button);
+        vb.getChildren().addAll( score1, hb);
         vb.setLayoutY(30);
 
         root.getChildren().add(vb);

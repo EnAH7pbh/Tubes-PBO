@@ -27,44 +27,13 @@ import javafx.util.Duration;
 public class Komponen {
 
     RandString unduh = new RandString();
-    private static final Integer STARTTIME = 2;
-    private Timeline timeline;
-    private Label timerLabel;
     private Label angka1;
     private Label angka2;
     private Label Nilai;
     private Label operator;
     private TextField jawab;
-    Button Menjawab;
-    private IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
-    private IntegerProperty zero = new SimpleIntegerProperty(0);
+    private Button Menjawab;
     private int Nilaiint = 0;
-
-    public Button Tombol_start() {
-        Button button = new Button();
-        button.setText("Start");
-        button.setOnAction((ActionEvent event) -> {
-            if (timeline != null) {
-                timeline.stop();
-                Menjawab.setDisable(true);
-                jawab.setDisable(true);
-            }
-            timeSeconds.set(STARTTIME);
-            timeline = new Timeline();
-            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(STARTTIME + 1), new KeyValue(timeSeconds, 0)));
-            timeline.playFromStart();
-            Menjawab.setDisable(false);
-            jawab.setDisable(false);
-        });
-        return button;
-    }
-
-    public Label getTimerLabel() {
-        timerLabel = new Label();
-        timerLabel.textProperty().bind(timeSeconds.asString());
-        timerLabel.setTextFill(Color.RED);
-        return timerLabel;
-    }
 
     public Label getOperator() {
         operator = new Label();
@@ -92,13 +61,11 @@ public class Komponen {
 
     public TextField setJawab() {
         jawab = new TextField();
-        jawab.setDisable(true);
         return jawab;
     }
 
     public Button Jawab() {
         Menjawab = new Button();
-        Menjawab.setDisable(true);
         Menjawab.setText("jawab");
         Menjawab.setOnAction((new EventHandler<ActionEvent>() {
             @Override
