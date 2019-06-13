@@ -15,7 +15,8 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE.md](htt
  
 * [About the Project](#about-the-project)
  ## About The Project
- 
+ [![Product Name Screen Shot][product-screenshot]](https://example.com)
+  Project yang kami buat adalah sebuah soal perhitungan matematika sederhana yang terdiri dari 4 operator perhitungan yaitu tambah (+), kurang (-), bagi (/), dan kali (*), 
   
   
   
