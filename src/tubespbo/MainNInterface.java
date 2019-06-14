@@ -6,7 +6,6 @@
 package tubespbo;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -16,9 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
 
-import javax.swing.JOptionPane;
 
 /**
  * @author hanif
@@ -41,10 +38,14 @@ public class MainNInterface extends Application {
         Label angka1 = unduh.getAngka();
         Label angka2 = unduh.getAngka2();
         Label equal = new Label("=");
-        TextField answer = unduh.setJawab();
-        Button Menjawab = unduh.Jawab();
         Label score1 = unduh.getNilai();
+        Label Durasi = unduh.getTimerLabel();
+
+        TextField answer = unduh.setJawab();
+
+        Button Menjawab = unduh.Jawab();
         Button Ulangi = unduh.Ulangi();
+        Button start = unduh.Tombol_start();
 
         answer.setPrefWidth(40);
 
@@ -57,7 +58,7 @@ public class MainNInterface extends Application {
         hb.getChildren().addAll(angka1, Operator, angka2, equal, answer, Menjawab);
 
         vb.setPrefWidth(scene.getWidth());
-        vb.getChildren().addAll( score1, hb,Ulangi);
+        vb.getChildren().addAll(Durasi, score1, hb, Ulangi, start);
         vb.setLayoutY(30);
 
         root.getChildren().add(vb);

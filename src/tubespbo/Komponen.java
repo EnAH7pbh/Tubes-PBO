@@ -5,11 +5,20 @@
  */
 package tubespbo;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+import javafx.util.Duration;
+
 
 /**
  * @author hanif
@@ -17,6 +26,9 @@ import javafx.scene.control.TextField;
 public class Komponen {
 
     RandString unduh = new RandString();
+    private static final Integer STARTTIME = 60;
+    private Timeline timeline;
+    private Label timerLabel;
     private Label angka1;
     private Label angka2;
     private Label Nilai;
@@ -25,6 +37,9 @@ public class Komponen {
     private Button Menjawab;
     private int Nilaiint = 0;
     private Button Reset;
+    Button button;
+    private IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
+    private BooleanBinding booleanBind;
 
     public Label getOperator() {
         operator = new Label();
@@ -46,8 +61,14 @@ public class Komponen {
 
     public Label getNilai() {
         Nilai = new Label();
-        Nilai.setText("" + Nilaiint);
         return Nilai;
+    }
+
+    public Label getTimerLabel() {
+        timerLabel = new Label();
+        timerLabel.textProperty().bind(timeSeconds.asString());
+        timerLabel.setTextFill(Color.RED);
+        return timerLabel;
     }
 
     public TextField setJawab() {
@@ -55,9 +76,26 @@ public class Komponen {
         return jawab;
     }
 
+    public Button Tombol_start() {
+        button = new Button();
+        button.setText("Start");
+        button.setOnAction((ActionEvent event) -> {
+            timeSeconds.set(STARTTIME);
+            timeline = new Timeline();
+            timeline.getKeyFrames().add(
+                    new KeyFrame(Duration.seconds(STARTTIME + 1),
+                            new KeyValue(timeSeconds, 0)));
+            timeline.playFromStart();
+            button.setDisable(true);
+        });
+        return button;
+    }
+
     public Button Jawab() {
+        booleanBind = jawab.textProperty().isEmpty();
         Menjawab = new Button();
         Menjawab.setText("jawab");
+        Menjawab.disableProperty().bind(booleanBind);
         Menjawab.setOnAction((new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -124,7 +162,7 @@ public class Komponen {
                         operator.setText(unduh.getOperator());
                         Nilai.setText("" + Nilaiint);
                     }
-                } else if (operator.getText().equals(":") ) {
+                } else if (operator.getText().equals(":")) {
                     double nilai, bil1, bil2, jawaban;
                     bil1 = Double.parseDouble(angka1.getText());
                     bil2 = Double.parseDouble(angka2.getText());
@@ -150,7 +188,9 @@ public class Komponen {
         }));
         return Menjawab;
     }
-    public Button Ulangi(){
+
+    public Button Ulangi() {
+        booleanBind = Nilai.textProperty().isEmpty();
         Reset = new Button();
         Reset.setText("Reset");
         Reset.setOnAction((new EventHandler<ActionEvent>() {
@@ -158,8 +198,11 @@ public class Komponen {
             public void handle(ActionEvent event) {
                 Nilaiint = 0;
                 Nilai.setText("0");
+                button.setDisable(false);
+                timerLabel.textProperty().bind(timeSeconds.asString());
             }
         }));
+        Reset.disableProperty().bind(booleanBind);
         return Reset;
     }
 }
