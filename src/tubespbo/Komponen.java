@@ -80,8 +80,8 @@ public class Komponen {
     }
 
     public TextField setJawab() {
-        booleanBind = timerLabel.textProperty().isEqualTo("0");
         jawab = new TextField();
+        booleanBind = timerLabel.textProperty().isEqualTo("0").or(timerLabel.textProperty().isEqualTo("60"));
         jawab.disableProperty().bind(booleanBind);
         jawab.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         return jawab;
