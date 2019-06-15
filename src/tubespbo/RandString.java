@@ -21,7 +21,7 @@ public class RandString {
                 operator ="-";
                 break;
             case 3:
-                operator = "*";
+                operator = "X";
                 break;
             case 4:
                 operator = ":";

@@ -17,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 
 
@@ -44,40 +46,47 @@ public class Komponen {
     public Label getOperator() {
         operator = new Label();
         operator.setText(unduh.getOperator());
+        operator.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         return operator;
     }
 
     public Label getAngka() {
         angka1 = new Label();
+        angka1.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         angka1.setText(unduh.getAngkaS());
         return angka1;
     }
 
     public Label getAngka2() {
         angka2 = new Label();
+        angka2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         angka2.setText(unduh.getAngkaS());
         return angka2;
     }
 
     public Label getNilai() {
         Nilai = new Label();
+        Nilai.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         return Nilai;
     }
 
     public Label getTimerLabel() {
         timerLabel = new Label();
         timerLabel.textProperty().bind(timeSeconds.asString());
+        timerLabel.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         timerLabel.setTextFill(Color.RED);
         return timerLabel;
     }
 
     public TextField setJawab() {
         jawab = new TextField();
+        jawab.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         return jawab;
     }
 
     public Button Tombol_start() {
         button = new Button();
+        button.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         button.setText("Start");
         button.setOnAction((ActionEvent event) -> {
             timeSeconds.set(STARTTIME);
@@ -94,6 +103,7 @@ public class Komponen {
     public Button Jawab() {
         booleanBind = jawab.textProperty().isEmpty();
         Menjawab = new Button();
+        Menjawab.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         Menjawab.setText("jawab");
         Menjawab.disableProperty().bind(booleanBind);
         Menjawab.setOnAction((new EventHandler<ActionEvent>() {
@@ -141,7 +151,7 @@ public class Komponen {
                         operator.setText(unduh.getOperator());
                         Nilai.setText("" + Nilaiint);
                     }
-                } else if (operator.getText().equals("*")) {
+                } else if (operator.getText().equals("X")) {
                     int nilai, bil1, bil2, jawaban;
                     bil1 = Integer.parseInt(angka1.getText());
                     bil2 = Integer.parseInt(angka2.getText());
@@ -192,6 +202,7 @@ public class Komponen {
     public Button Ulangi() {
         booleanBind = Nilai.textProperty().isEmpty();
         Reset = new Button();
+        Reset.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         Reset.setText("Reset");
         Reset.setOnAction((new EventHandler<ActionEvent>() {
             @Override
