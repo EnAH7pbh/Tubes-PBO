@@ -41,6 +41,7 @@ public class Komponen {
     private Button Reset;
     Button button;
     private IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
+    //private IntegerProperty zero = new SimpleIntegerProperty(0);
     private BooleanBinding booleanBind;
 
     public Label getOperator() {
@@ -79,7 +80,9 @@ public class Komponen {
     }
 
     public TextField setJawab() {
+        booleanBind = timerLabel.textProperty().isEqualTo("0");
         jawab = new TextField();
+        jawab.disableProperty().bind(booleanBind);
         jawab.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         return jawab;
     }
@@ -89,6 +92,9 @@ public class Komponen {
         button.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         button.setText("Start");
         button.setOnAction((ActionEvent event) -> {
+            if (timeline != null) {
+                timeline.stop();
+            }
             timeSeconds.set(STARTTIME);
             timeline = new Timeline();
             timeline.getKeyFrames().add(
@@ -200,7 +206,7 @@ public class Komponen {
     }
 
     public Button Ulangi() {
-        booleanBind = Nilai.textProperty().isEmpty();
+        booleanBind = timerLabel.textProperty().isNotEqualTo("0");
         Reset = new Button();
         Reset.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         Reset.setText("Reset");
@@ -208,8 +214,9 @@ public class Komponen {
             @Override
             public void handle(ActionEvent event) {
                 Nilaiint = 0;
-                Nilai.setText("0");
+                Nilai.setText("");
                 button.setDisable(false);
+                timeSeconds.setValue(STARTTIME);
                 timerLabel.textProperty().bind(timeSeconds.asString());
             }
         }));
