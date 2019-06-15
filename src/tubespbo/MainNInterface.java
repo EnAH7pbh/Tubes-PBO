@@ -47,7 +47,7 @@ public class MainNInterface extends Application {
         Button Ulangi = unduh.Ulangi();
         Button start = unduh.Tombol_start();
 
-        answer.setPrefWidth(40);
+        answer.setPrefWidth(60);
 
         VBox vb = new VBox(20);
         vb.setAlignment(Pos.CENTER);
