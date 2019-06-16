@@ -23,6 +23,11 @@ import javafx.stage.Stage;
 public class MainNInterface extends Application {
 
     Komponen unduh = new Komponen();
+    LabellMuka matematika = new LabelOperatorMatematika();
+    LabellMuka getAngka = new LabelAngka1();
+    LabellMuka getAngka2 = new LabelAngka2();
+    LabellMuka sama = new Samadengan();
+    LabellMuka Nilai = new LabelNilai();
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -34,18 +39,18 @@ public class MainNInterface extends Application {
         Group root = new Group();
         Scene scene = new Scene(root, 400, 400);
 
-        Label Operator = unduh.getOperator();
-        Label angka1 = unduh.getAngka();
-        Label angka2 = unduh.getAngka2();
-        Label equal = new Label("=");
-        Label score1 = unduh.getNilai();
-        Label Durasi = unduh.getTimerLabel();
+        Label Operator = matematika.getSifat();
+        Label angka1 = getAngka.getSifat();
+        Label angka2 = getAngka2.getSifat();
+        Label equal = sama.getSifat();
+        Label score1 = Nilai.getSifat();
+        Label Durasi = unduh.TimerLabel();
 
         TextField answer = unduh.setJawab();
 
-        Button Menjawab = unduh.Jawab();
-        Button Ulangi = unduh.Ulangi();
-        Button start = unduh.Tombol_start();
+        Button Menjawab = unduh.Jawab(Operator, angka1, angka2, score1);
+        Button start = unduh.Tombol_start(Operator, angka1, angka2, equal);
+        Button Ulangi = unduh.Ulangi(Operator, angka1, angka2, equal, score1, Durasi);
 
         answer.setPrefWidth(60);
 

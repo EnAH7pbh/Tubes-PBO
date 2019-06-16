@@ -1,6 +1,6 @@
 package tubespbo;
 import java.util.Random;
-public class RandString {
+public class RandomGenerator {
     Random rand = new Random();
     public String getAngkaS(){
         String angka;

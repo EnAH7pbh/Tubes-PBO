@@ -8,7 +8,6 @@ package tubespbo;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.binding.BooleanBinding;
@@ -28,57 +27,17 @@ import javafx.util.Duration;
  */
 public class Komponen {
 
-    RandString unduh = new RandString();
+    RandomGenerator unduh = new RandomGenerator();
     private static final Integer STARTTIME = 60;
     private Timeline timeline;
     private Label timerLabel;
-    private Label angka1;
-    private Label angka2;
-    private Label Nilai;
-    private Label operator;
-    private TextField jawab;
     private Button Menjawab;
+    private TextField jawab;
     private int Nilaiint = 0;
     private Button Reset;
-    Button button;
+    private Button button;
     private IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
-    //private IntegerProperty zero = new SimpleIntegerProperty(0);
     private BooleanBinding booleanBind;
-
-    public Label getOperator() {
-        operator = new Label();
-        operator.setText(unduh.getOperator());
-        operator.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
-        return operator;
-    }
-
-    public Label getAngka() {
-        angka1 = new Label();
-        angka1.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
-        angka1.setText(unduh.getAngkaS());
-        return angka1;
-    }
-
-    public Label getAngka2() {
-        angka2 = new Label();
-        angka2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
-        angka2.setText(unduh.getAngkaS());
-        return angka2;
-    }
-
-    public Label getNilai() {
-        Nilai = new Label();
-        Nilai.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
-        return Nilai;
-    }
-
-    public Label getTimerLabel() {
-        timerLabel = new Label();
-        timerLabel.textProperty().bind(timeSeconds.asString());
-        timerLabel.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
-        timerLabel.setTextFill(Color.RED);
-        return timerLabel;
-    }
 
     public TextField setJawab() {
         jawab = new TextField();
@@ -86,15 +45,22 @@ public class Komponen {
         jawab.disableProperty().bind(booleanBind);
         jawab.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         jawab.setOnKeyTyped((KeyEvent event) -> {
-            if(( event.getCharacter().matches("[a-z]*"))){
+            if(( event.getCharacter().matches("^[a-zA-Z]*$"))){
                 event.consume();
             }
-
         });
         return jawab;
     }
 
-    public Button Tombol_start() {
+    public  Label TimerLabel(){
+        timerLabel = new Label();
+        timerLabel.textProperty().bind(timeSeconds.asString());
+        timerLabel.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
+        timerLabel.setTextFill(Color.RED);
+        return timerLabel;
+    }
+
+    public Button Tombol_start(Label Operator,Label angka1,Label angka2,Label sama) {
         button = new Button();
         button.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         button.setText("Start");
@@ -109,11 +75,15 @@ public class Komponen {
                             new KeyValue(timeSeconds, 0)));
             timeline.playFromStart();
             button.setDisable(true);
+            Operator.setText(unduh.getOperator());
+            angka1.setText(unduh.getAngkaS());
+            angka2.setText(unduh.getAngkaS());
+            sama.setText("=");
         });
         return button;
     }
 
-    public Button Jawab() {
+    public Button Jawab(Label operator,Label angka1,Label angka2,Label Nilai) {
         booleanBind = jawab.textProperty().isEmpty();
         Menjawab = new Button();
         Menjawab.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
@@ -129,7 +99,7 @@ public class Komponen {
                     nilai = bil1 + bil2;
                     jawaban = Integer.parseInt(jawab.getText());
                     if (nilai != jawaban) {
-                        Nilaiint -= 50;
+                        Nilaiint -= 100;
                         jawab.setText("");
                         angka1.setText(unduh.getAngkaS());
                         angka2.setText(unduh.getAngkaS());
@@ -150,7 +120,7 @@ public class Komponen {
                     nilai = bil1 - bil2;
                     jawaban = Integer.parseInt(jawab.getText());
                     if (nilai != jawaban) {
-                        Nilaiint -= 50;
+                        Nilaiint -= 100;
                         jawab.setText("");
                         angka1.setText(unduh.getAngkaS());
                         angka2.setText(unduh.getAngkaS());
@@ -171,7 +141,7 @@ public class Komponen {
                     nilai = bil1 * bil2;
                     jawaban = Integer.parseInt(jawab.getText());
                     if (nilai != jawaban) {
-                        Nilaiint -= 50;
+                        Nilaiint -= 100;
                         jawab.setText("");
                         angka1.setText(unduh.getAngkaS());
                         angka2.setText(unduh.getAngkaS());
@@ -192,7 +162,7 @@ public class Komponen {
                     nilai = bil1 / bil2;
                     jawaban = Double.parseDouble(jawab.getText());
                     if (nilai != jawaban) {
-                        Nilaiint -= 50;
+                        Nilaiint -= 100;
                         jawab.setText("");
                         angka1.setText(unduh.getAngkaS());
                         angka2.setText(unduh.getAngkaS());
@@ -212,7 +182,7 @@ public class Komponen {
         return Menjawab;
     }
 
-    public Button Ulangi() {
+    public Button Ulangi(Label Operator,Label angka1,Label angka2,Label sama,Label Nilai,Label timerLabel) {
         booleanBind = timerLabel.textProperty().isNotEqualTo("0");
         Reset = new Button();
         Reset.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
@@ -221,6 +191,10 @@ public class Komponen {
             @Override
             public void handle(ActionEvent event) {
                 Nilaiint = 0;
+                angka1.setText("P");
+                Operator.setText("L");
+                angka2.setText("A");
+                sama.setText("Y");
                 Nilai.setText("");
                 button.setDisable(false);
                 timeSeconds.setValue(STARTTIME);
@@ -230,4 +204,5 @@ public class Komponen {
         Reset.disableProperty().bind(booleanBind);
         return Reset;
     }
+
 }
