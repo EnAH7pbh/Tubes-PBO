@@ -8,6 +8,7 @@ package tubespbo;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.binding.BooleanBinding;
@@ -16,11 +17,11 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
-
 
 /**
  * @author hanif
@@ -84,6 +85,12 @@ public class Komponen {
         booleanBind = timerLabel.textProperty().isEqualTo("0").or(timerLabel.textProperty().isEqualTo("60"));
         jawab.disableProperty().bind(booleanBind);
         jawab.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
+        jawab.setOnKeyTyped((KeyEvent event) -> {
+            if(( event.getCharacter().matches("[a-z]*"))){
+                event.consume();
+            }
+
+        });
         return jawab;
     }
 
