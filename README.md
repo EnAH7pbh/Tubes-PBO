@@ -15,9 +15,34 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE.md](htt
  
  ## About The Project
  
- [![Flowchart][Flowchart]](https://github.com/ahmadcah/Tubes-PBO/blob/master/src/Preview/flowcharttubes.png)
+ <p align="center">
+  <a href="https://github.com/ahmadcah/Tubes-PBO">
+    <img src="src/Preview/flowcharttubes.png" alt="Logo" width="1111" height="1571">
+  </a>
+  <h3 align="center">FLOWCHART</h3>
+</p>
+
+<p align="center">
+  <a href="https://github.com/ahmadcah/Tubes-PBO">
+    <img src="src/Preview/Preview.png" alt="Logo" width="603" height="645">
+  </a>
+ <h3 align="center">preview 1</h3> 
+</p>
+
+<p align="center">
+  <a href="https://github.com/ahmadcah/Tubes-PBO">
+    <img src="src/Preview/Preview 2.png" alt="Logo" width="603" height="645">
+  </a>
+ <h3 align="center">preview 2</h3>
+</p>
  
   Project yang kami buat adalah sebuah soal perhitungan matematika sederhana yang terdiri dari 4 operator perhitungan yaitu tambah (+), kurang (-), bagi (/), dan kali (x), :smile:
+
+  di rekomendasikan untuk menggunka JDK oracle 8
+  
+  bebas untuk clone dan direkomendasikan pakai intelij
+  
+  tidak ada library tambahan dalam program ini
   
   
   
