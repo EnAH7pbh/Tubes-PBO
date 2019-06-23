@@ -13,6 +13,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -21,13 +22,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * @author hanif
  */
 public class Komponen {
 
-    RandomGenerator unduh = new RandomGenerator();
+    private RandomGenerator unduh = new RandomGenerator();
     private static final Integer STARTTIME = 60;
     private Timeline timeline;
     private Label timerLabel;
@@ -45,14 +47,14 @@ public class Komponen {
         jawab.disableProperty().bind(booleanBind);
         jawab.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         jawab.setOnKeyTyped((KeyEvent event) -> {
-            if(( event.getCharacter().matches("^[a-zA-Z]*$"))){
+            if ((event.getCharacter().matches("^[a-zA-Z]*$"))) {
                 event.consume();
             }
         });
         return jawab;
     }
 
-    public  Label TimerLabel(){
+    public Label TimerLabel() {
         timerLabel = new Label();
         timerLabel.textProperty().bind(timeSeconds.asString());
         timerLabel.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
@@ -60,7 +62,7 @@ public class Komponen {
         return timerLabel;
     }
 
-    public Button Tombol_start(Label Operator,Label angka1,Label angka2,Label sama) {
+    public Button Tombol_start(Label Operator, Label angka1, Label angka2, Label sama) {
         button = new Button();
         button.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
         button.setText("Start");
@@ -83,7 +85,7 @@ public class Komponen {
         return button;
     }
 
-    public Button Jawab(Label operator,Label angka1,Label angka2,Label Nilai) {
+    public Button Jawab(Label operator, Label angka1, Label angka2, Label Nilai) {
         booleanBind = jawab.textProperty().isEmpty();
         Menjawab = new Button();
         Menjawab.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
@@ -182,7 +184,7 @@ public class Komponen {
         return Menjawab;
     }
 
-    public Button Ulangi(Label Operator,Label angka1,Label angka2,Label sama,Label Nilai,Label timerLabel) {
+    public Button Ulangi(Label Operator, Label angka1, Label angka2, Label sama, Label Nilai, Label timerLabel) {
         booleanBind = timerLabel.textProperty().isNotEqualTo("0");
         Reset = new Button();
         Reset.setFont(Font.font("Tahoma", FontWeight.NORMAL, 17));
@@ -190,6 +192,12 @@ public class Komponen {
         Reset.setOnAction((new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Congratulation!")
+                        .text("Your last game score is : " + Nilaiint)
+                        .hideAfter(Duration.seconds(4))
+                        .position(Pos.CENTER);
+                notificationBuilder.showInformation();
                 Nilaiint = 0;
                 angka1.setText("P");
                 Operator.setText("L");
