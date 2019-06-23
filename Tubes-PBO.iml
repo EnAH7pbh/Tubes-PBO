@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="controlsfx-8.40.15" level="project" />
+    <orderEntry type="library" name="controlsfx-8.40.151" level="project" />
   </component>
 </module>
