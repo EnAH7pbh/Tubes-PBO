@@ -93,11 +93,11 @@ public class Komponen {
             @Override
             public void handle(ActionEvent event) {
                 if (operator.getText().equals("+")) {
-                    int nilai, bil1, bil2, jawaban;
-                    bil1 = Integer.parseInt(angka1.getText());
-                    bil2 = Integer.parseInt(angka2.getText());
+                    double nilai, bil1, bil2, jawaban;
+                    bil1 = Double.parseDouble(angka1.getText());
+                    bil2 = Double.parseDouble(angka2.getText());
                     nilai = bil1 + bil2;
-                    jawaban = Integer.parseInt(jawab.getText());
+                    jawaban = Double.parseDouble(jawab.getText());
                     if (nilai != jawaban) {
                         Nilaiint -= 100;
                         jawab.setText("");
@@ -114,11 +114,11 @@ public class Komponen {
                         Nilai.setText("" + Nilaiint);
                     }
                 } else if (operator.getText().equals("-")) {
-                    int nilai, bil1, bil2, jawaban;
-                    bil1 = Integer.parseInt(angka1.getText());
-                    bil2 = Integer.parseInt(angka2.getText());
+                    double nilai, bil1, bil2, jawaban;
+                    bil1 = Double.parseDouble(angka1.getText());
+                    bil2 = Double.parseDouble(angka2.getText());
                     nilai = bil1 - bil2;
-                    jawaban = Integer.parseInt(jawab.getText());
+                    jawaban = Double.parseDouble(jawab.getText());
                     if (nilai != jawaban) {
                         Nilaiint -= 100;
                         jawab.setText("");
@@ -135,11 +135,11 @@ public class Komponen {
                         Nilai.setText("" + Nilaiint);
                     }
                 } else if (operator.getText().equals("X")) {
-                    int nilai, bil1, bil2, jawaban;
-                    bil1 = Integer.parseInt(angka1.getText());
-                    bil2 = Integer.parseInt(angka2.getText());
+                    double nilai, bil1, bil2, jawaban;
+                    bil1 = Double.parseDouble(angka1.getText());
+                    bil2 = Double.parseDouble(angka2.getText());
                     nilai = bil1 * bil2;
-                    jawaban = Integer.parseInt(jawab.getText());
+                    jawaban = Double.parseDouble(jawab.getText());
                     if (nilai != jawaban) {
                         Nilaiint -= 100;
                         jawab.setText("");
