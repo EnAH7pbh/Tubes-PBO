@@ -36,13 +36,20 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE.md](htt
  <h3 align="center">preview 2</h3>
 </p>
  
+ <p align="center">
+  <a href="https://github.com/ahmadcah/Tubes-PBO">
+    <img src="src/Preview/preview 3.png" alt="Logo" width="603" height="645">
+  </a>
+ <h3 align="center">preview 3</h3>
+</p>
+
   Project yang kami buat adalah sebuah soal perhitungan matematika sederhana yang terdiri dari 4 operator perhitungan yaitu tambah (+), kurang (-), bagi (/), dan kali (x), :smile:
 
   di rekomendasikan untuk menggunka JDK oracle 8
   
   bebas untuk clone dan direkomendasikan pakai intelij
   
-  tidak ada library tambahan dalam program ini
+  library tambahan :  [controlsfx](https://github.com/controlsfx/controlsfx)
   
   
   
